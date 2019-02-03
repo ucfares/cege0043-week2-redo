@@ -1,4 +1,4 @@
-<html>
+0000000000000<html>
 <head>
 	<!-- the following links add the CSS and Javascript required for the Leaflet Map -->
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" 
@@ -40,6 +40,17 @@
 		//and add it to the map
 		L.geoJSON(geojsonFeature).addTo(mymap).bindPopup("<b>"+geojsonFeature.properties.name+" "+geojsonFeature.properties.popupContent+"<b>");
 
+		// create a custom popup
+		var popup= L.popup();
+
+		//create an event detector to wait for the user to click and then use the popup to show them where they clicked
+
+		//note that you don't need to do any complicated maths to convert screen co-ordinates to realworld coordinates- the leaflet api does this for you
+
+		function onMapClick(e){popup.setLatLng(e.latlng).setContent("You clicked the map at" + e.latlng.toString()).openOn(mymap);}
+		//now add the click event detector to the map
+
+		mymap.on('click', onMapClick)
 	</script>
 </body>
 </html>	
