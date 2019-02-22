@@ -1,0 +1,20 @@
+<html>
+<head>
+<title>TestHTMLLocationFunctionality</title>
+<script>
+function trackLocation(){ 
+	if(navigator.geolocation){ 
+		navigator.geolocation.watchPosition(showPosition);
+		}else{ document.getElementById('showLocation').innerHTML="Geolocationisnotsupportedbythisbrowser."; 
+	} 
+}
+function showPosition(position){
+	document.getElementById('showLocation').innerHTML="Latitude:"+position.coords.latitude+ "<br>Longitude:"+position.coords.longitude; } 
+</script>
+</head>
+<body>
+<b>Thiscodewilldisplayyourcurrentlocation</b>
+<div id='showLocation'>Locationwillbedisplayedhere</div>
+<button id='trackLocation'onclick='trackLocation()'>Click Me to Get Your Location</button>
+</body>
+</html>
